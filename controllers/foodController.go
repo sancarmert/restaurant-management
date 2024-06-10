@@ -6,17 +6,17 @@ import (
 	"log"
 	"math"
 	"net/http"
+	"restaurant-management/database"
+	"restaurant-management/models"
 	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator"
-	"github.com/sancarmert/restaurant-management/database"
-	"github.com/sancarmert/restaurant-management/models"
+	"github.com/go-playground/validator/v10"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"gopkg.in/mgo.v2/bson"
 )
 
 var foodCollection *mongo.Collection = database.OpenCollection(database.Client, "food")

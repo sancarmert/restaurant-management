@@ -4,15 +4,15 @@ import (
 	"context"
 	"log"
 	"net/http"
+	"restaurant-management/database"
+	"restaurant-management/models"
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/sancarmert/restaurant-management/database"
-	"github.com/sancarmert/restaurant-management/models"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"gopkg.in/mgo.v2/bson"
 )
 
 type OrderItemPack struct {
