@@ -1,12 +1,13 @@
-pacakge routes
+package routes
 
-import(
-
+import (
+	"github.com/gin-gonic/gin"
+	controller "github.com/sancarmert/restaurant-management/controllers"
 )
 
-func UserRoutes(incomingRoutes*gin.Engine){
-	incomingRoutes.GET("/users",controller.GetUsers())
+func UserRoutes(incomingRoutes *gin.Engine) {
+	incomingRoutes.GET("/users", controller.GetUsers())
 	incomingRoutes.GET("/users/:user_id", controller.GetUser())
-	incomingRoutes.POST("/users/signup",controller.SignUp())
-	incomingRoutes.POST("/users/login",controller.Login())
+	incomingRoutes.POST("/users/signup", controller.SignUp())
+	incomingRoutes.POST("/users/login", controller.Login())
 }

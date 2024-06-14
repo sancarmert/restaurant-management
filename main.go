@@ -3,9 +3,11 @@ package main
 import (
 	"os"
 
-	"restaurant-management/database"
-	middleware "restaurant-management/middleware"
-	routes "restaurant-management/routes"
+	routes "github.com/sancarmert/restaurant-management/routes"
+
+	middleware "github.com/sancarmert/restaurant-management/middleware"
+
+	"github.com/sancarmert/restaurant-management/database"
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/mongo"

@@ -5,11 +5,12 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"restaurant-management/database"
 	"strconv"
 	"time"
 
-	helper "restaurant-management/helpers"
+	"github.com/sancarmert/restaurant-management/database"
+
+	helper "github.com/sancarmert/restaurant-management/helpers"
 
 	"github.com/gin-gonic/gin"
 	"github.com/sancarmert/restaurant-management/models"

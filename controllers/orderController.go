@@ -5,9 +5,10 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"restaurant-management/database"
-	"restaurant-management/models"
 	"time"
+
+	"github.com/sancarmert/restaurant-management/database"
+	"github.com/sancarmert/restaurant-management/models"
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"

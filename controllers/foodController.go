@@ -6,10 +6,11 @@ import (
 	"log"
 	"math"
 	"net/http"
-	"restaurant-management/database"
-	"restaurant-management/models"
 	"strconv"
 	"time"
+
+	"github.com/sancarmert/restaurant-management/database"
+	"github.com/sancarmert/restaurant-management/models"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
