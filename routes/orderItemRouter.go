@@ -1,7 +1,7 @@
 package routes
 
 import (
-	controller "restaurant-management/controllers"
+	controller "github.com/sancarmert/restaurant-management/controllers"
 
 	"github.com/gin-gonic/gin"
 )
