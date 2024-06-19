@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"math"
 	"net/http"
@@ -39,7 +38,6 @@ func GetFoods() gin.HandlerFunc {
 		}
 
 		startIndex := (page - 1) * recordPerPage
-		startIndex, err = strconv.Atoi(c.Query("startIndex"))
 
 		matchStage := bson.D{{Key: "$match", Value: bson.D{}}}
 		groupStage := bson.D{
@@ -62,7 +60,7 @@ func GetFoods() gin.HandlerFunc {
 		})
 
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occured while listing food items"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occurred while listing food items"})
 			return
 		}
 
@@ -85,7 +83,7 @@ func GetFood() gin.HandlerFunc {
 
 		err := foodCollection.FindOne(ctx, bson.M{"food_id": foodId}).Decode(&food)
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occured while fetching the food item"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occurred while fetching the food item"})
 			return
 		}
 
@@ -114,8 +112,7 @@ func CreateFood() gin.HandlerFunc {
 
 		err := menuCollection.FindOne(ctx, bson.M{"menu_id": food.Menu_id}).Decode(&menu)
 		if err != nil {
-			msg := fmt.Sprint("menu was not found")
-			c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "menu was not found"})
 			return
 		}
 
@@ -129,8 +126,7 @@ func CreateFood() gin.HandlerFunc {
 
 		result, insertErr := foodCollection.InsertOne(ctx, food)
 		if insertErr != nil {
-			msg := fmt.Sprint("food item was not created")
-			c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "food item was not created"})
 			return
 		}
 
@@ -167,8 +163,7 @@ func UpdateFood() gin.HandlerFunc {
 		if food.Menu_id != nil {
 			err := menuCollection.FindOne(ctx, bson.M{"menu_id": food.Menu_id}).Decode(&menu)
 			if err != nil {
-				msg := fmt.Sprint("Menu was not found")
-				c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
+				c.JSON(http.StatusInternalServerError, gin.H{"error": "Menu was not found"})
 				return
 			}
 			updateObj = append(updateObj, bson.E{Key: "menu", Value: food.Menu_id})
@@ -194,8 +189,7 @@ func UpdateFood() gin.HandlerFunc {
 		)
 
 		if err != nil {
-			msg := fmt.Sprint("food item update failed")
-			c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "food item update failed"})
 			return
 		}
 		c.JSON(http.StatusOK, result)
